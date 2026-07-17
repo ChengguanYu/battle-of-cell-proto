@@ -1,0 +1,13 @@
+syntax = "proto3";
+package BattleOfCell.Message;
+
+/// Gate/内部 -> Rooms 进入房间请求
+message RoomsEnterReq // IAddressRequest,RoomsEnterResp
+{
+    int64 userId = 1;
+}
+
+/// Gate/内部 -> Rooms 进入房间响应
+message RoomsEnterResp // IAddressResponse
+{
+}
