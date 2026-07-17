@@ -1,6 +1,6 @@
 syntax = "proto3";
 package BattleOfCell.Message;
-import "Outer/Meta.proto";
+import "Outer/Common/Meta.proto";
 
 /// 客户端发起匹配请求
 message PlayerMatchReq // IRequest,PlayerMatchResp

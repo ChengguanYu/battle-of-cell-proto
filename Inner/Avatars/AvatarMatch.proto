@@ -1,0 +1,13 @@
+syntax = "proto3";
+package BattleOfCell.Message;
+
+/// Gate -> Avatar 匹配请求
+message AvatarMatchReq // IAddressRequest,AvatarMatchResp
+{
+    int64 userId = 1;
+}
+
+/// Gate -> Avatar 匹配响应
+message AvatarMatchResp // IAddressResponse
+{
+}
