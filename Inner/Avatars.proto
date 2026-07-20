@@ -23,3 +23,11 @@ message AvatarMatchResp // IAddressResponse
     /// 匹配成功后的房间 ID；失败时为 0
     int64 room_id = 2;
 }
+
+/// Gate -> Avatar 清理玩家通知（WsSession 清理后）
+message AvatarCleanupNotify // IAddressMessage
+{
+    int64 userId = 1;
+    /// 清理原因，如 timed_out_grace_expired
+    string reason = 2;
+}
