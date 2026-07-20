@@ -1,0 +1,15 @@
+syntax = "proto3";
+package BattleOfCell.Message;
+
+/// Match/Avatar -> Rooms 进入房间请求
+message RoomsEnterReq // IAddressRequest,RoomsEnterResp
+{
+    int64 userId = 1;
+}
+
+/// Match/Avatar -> Rooms 进入房间响应
+message RoomsEnterResp // IAddressResponse
+{
+    /// 进入成功后的房间 ID；失败时为 0
+    int64 room_id = 2;
+}

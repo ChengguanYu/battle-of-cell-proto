@@ -10,3 +10,16 @@ message PlayerEntryReq // IAddressRequest,PlayerEntryResp
 message PlayerEntryResp // IAddressResponse
 {
 }
+
+/// Gate -> Avatar 匹配请求
+message AvatarMatchReq // IAddressRequest,AvatarMatchResp
+{
+    int64 userId = 1;
+}
+
+/// Gate -> Avatar 匹配响应
+message AvatarMatchResp // IAddressResponse
+{
+    /// 匹配成功后的房间 ID；失败时为 0
+    int64 room_id = 2;
+}
