@@ -31,13 +31,13 @@ message player
     uint32 eid = 4;
 }
 
-message frame // IMessage
+message frame 
 {
     Op op = 2;
     player data = 3;
 }
 
-message server_frame
+message server_frame // IMessage
 {
     repeated frame frames = 1;
     uint64 frame_number = 2; // 帧号
