@@ -1,13 +1,13 @@
 syntax = "proto3";
 package BattleOfCell.Message;
 
-/// Match/Avatar -> Rooms 进入房间请求
+/// Match/Avatar -> Rooms 进入房间请求（旧链路 MatchOrCreate，保留兼容）
 message RoomsEnterReq // IAddressRequest,RoomsEnterResp
 {
     int64 userId = 1;
 }
 
-/// Match/Avatar -> Rooms 进入房间响应
+/// Match/Avatar -> Rooms 进入房间响应（旧链路）
 message RoomsEnterResp // IAddressResponse
 {
     /// 进入成功后的房间 ID；失败时为 0
@@ -20,4 +20,54 @@ message RoomsPlayerLeaveNotify // IAddressMessage
     int64 userId = 1;
     /// 离房原因，如 timed_out_grace_expired
     string reason = 2;
+}
+
+/// 房间列表快照条目（非权威，仅供 Match 选房线索）
+message RoomSnapItem // IMessage
+{
+    int64 room_id = 1;
+    int32 member_count = 2;
+    int32 capacity = 3;
+    /// RoomState 枚举底层值：Created=0, Opened=1, Closed=2
+    int32 state = 4;
+}
+
+/// Match -> Rooms 拉取可观察房间列表快照（只读线索，Join 结果才是权威）
+message RoomsGetRoomListSnapReq // IAddressRequest,RoomsGetRoomListSnapResp
+{
+}
+
+/// Match -> Rooms 房间列表快照响应
+message RoomsGetRoomListSnapResp // IAddressResponse
+{
+    repeated RoomSnapItem rooms = 2;
+}
+
+/// Match -> Rooms 加入指定房间
+message RoomsJoinReq // IAddressRequest,RoomsJoinResp
+{
+    int64 userId = 1;
+    int64 room_id = 2;
+}
+
+/// Match -> Rooms 加入指定房间响应
+message RoomsJoinResp // IAddressResponse
+{
+    /// 加入成功后的房间 ID；失败时为 0
+    int64 room_id = 2;
+}
+
+/// Match -> Rooms 创建房间并加入首位成员
+message RoomsCreateReq // IAddressRequest,RoomsCreateResp
+{
+    int64 userId = 1;
+    /// 容量；0 表示使用服务端默认
+    int32 capacity = 2;
+}
+
+/// Match -> Rooms 创建房间响应
+message RoomsCreateResp // IAddressResponse
+{
+    /// 创建成功后的房间 ID；失败时为 0
+    int64 room_id = 2;
 }
