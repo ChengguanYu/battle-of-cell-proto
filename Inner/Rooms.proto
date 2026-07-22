@@ -63,13 +63,24 @@ message RoomsJoinResp // IAddressResponse
 message RoomsCreateReq // IAddressRequest,RoomsCreateResp
 {
     int64 userId = 1;
-    /// 容量；0 表示使用服务端默认
-    int32 capacity = 2;
 }
 
 /// Match -> Rooms 创建房间响应
 message RoomsCreateResp // IAddressResponse
 {
     /// 创建成功后的房间 ID；失败时为 0
+    int64 room_id = 2;
+}
+
+/// Match -> Rooms 创建并进入（纯聚合 Create + Enter，无额外业务）
+message RoomsCreateAndEntryReq // IAddressRequest,RoomsCreateAndEntryResp
+{
+    int64 userId = 1;
+}
+
+/// Match -> Rooms 创建并进入响应
+message RoomsCreateAndEntryResp // IAddressResponse
+{
+    /// 成功后的房间 ID；失败时为 0
     int64 room_id = 2;
 }

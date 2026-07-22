@@ -5,8 +5,8 @@ import "Outer/Meta.proto";
 // 这个枚举报错是正常的
 enum Op
 {
-    SPAWN = 0;
-    MOVE = 1;
+    SPAWN = 0
+    MOVE = 1
 }
 
 // 为了防止平台浮点计算差异，使用定点数模拟浮点数 ， 单位取小数点后3位
