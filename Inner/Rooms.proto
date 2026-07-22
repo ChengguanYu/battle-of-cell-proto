@@ -41,6 +41,8 @@ message RoomsGetRoomListSnapReq // IAddressRequest,RoomsGetRoomListSnapResp
 message RoomsGetRoomListSnapResp // IAddressResponse
 {
     repeated RoomSnapItem rooms = 2;
+    /// 是否为空列表；true 表示当前无可观察房间
+    bool IsEmpty = 3;
 }
 
 /// Match -> Rooms 加入指定房间
