@@ -44,3 +44,9 @@ message server_frame // IMessage
     uint32 randomSeed = 3;
     MetaData meta = 4;
 }
+
+message client_frame // IMessage 
+{
+    repeated frame frames = 1;
+    uint64 frame_number = 2;
+}
