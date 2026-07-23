@@ -36,13 +36,13 @@ message RoomsLeaveResp // IAddressResponse
     /// 离开成功后的房间 ID；失败时为 0
     int64 room_id = 2;
 }
-/// Avatar -> Rooms 客户端帧转发（业务暂为日志骨架）
+/// Avatar -> Rooms 客户端帧转发
 message RoomsClientFrameNotify // IAddressMessage
 {
     int64 userId = 1;
     uint64 frame_number = 2;
-    /// frames 数量，仅供日志/骨架透传，完整操作后续再扩展
-    int32 frames_count = 3;
+    /// 客户端本帧操作列表（与 Outer client_frame.frames 同构）
+    repeated frame frames = 3;
 }
 
 /// 房间列表快照条目（非权威，仅供 Match 选房线索）
@@ -107,4 +107,3 @@ message RoomsCreateAndEntryResp // IAddressResponse
     /// 成功后的房间 ID；失败时为 0
     int64 room_id = 2;
 }
-
