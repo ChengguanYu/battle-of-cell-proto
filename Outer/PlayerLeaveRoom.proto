@@ -1,0 +1,19 @@
+syntax = "proto3";
+package BattleOfCell.Message;
+import "Outer/Meta.proto";
+
+/// 客户端主动退出房间请求
+message PlayerLeaveRoomReq // IRequest,PlayerLeaveRoomResp
+{
+
+}
+
+message PlayerLeaveRoomResp // IResponse
+{
+  MetaData meta = 1;
+  repeated RespError error = 2;
+  /// 业务是否成功（与 meta 同级；true 时 LightProto 会写出该字段）
+  bool ok = 3;
+  /// 离开成功后的房间 ID；失败时为 0
+  int64 room_id = 5;
+}

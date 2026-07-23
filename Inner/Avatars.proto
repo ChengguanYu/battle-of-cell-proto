@@ -24,6 +24,19 @@ message AvatarMatchResp // IAddressResponse
     int64 room_id = 2;
 }
 
+
+/// Gate -> Avatar 主动退出房间请求
+message AvatarLeaveRoomReq // IAddressRequest,AvatarLeaveRoomResp
+{
+    int64 userId = 1;
+}
+
+/// Gate -> Avatar 主动退出房间响应
+message AvatarLeaveRoomResp // IAddressResponse
+{
+    /// 离开成功后的房间 ID；失败时为 0
+    int64 room_id = 2;
+}
 /// Gate -> Avatar 清理玩家通知（WsSession 清理后）
 message AvatarCleanupNotify // IAddressMessage
 {
@@ -40,3 +53,4 @@ message AvatarClientFrameNotify // IAddressMessage
     /// frames 数量，仅供日志/骨架透传，完整操作后续再扩展
     int32 frames_count = 3;
 }
+
