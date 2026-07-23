@@ -7,7 +7,6 @@ enum Op
 {
     SPAWN = 0
     LAUNCH = 1
-    launch
 }
 
 message server_frame // IMessage
