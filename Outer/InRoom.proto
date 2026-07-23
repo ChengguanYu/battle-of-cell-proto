@@ -6,7 +6,22 @@ import "Outer/Meta.proto";
 enum Op
 {
     SPAWN = 0
-    MOVE = 1
+    LAUNCH = 1
+    launch
+}
+
+message server_frame // IMessage
+{
+    repeated frame frames = 1;
+    uint64 frame_number = 2; // 帧号
+    uint32 randomSeed = 3;
+    MetaData meta = 4;
+}
+
+message client_frame // IMessage 
+{
+    repeated frame frames = 1;
+    uint64 frame_number = 2;
 }
 
 // 为了防止平台浮点计算差异，使用定点数模拟浮点数 ， 单位取小数点后3位
@@ -37,16 +52,4 @@ message frame
     player data = 3;
 }
 
-message server_frame // IMessage
-{
-    repeated frame frames = 1;
-    uint64 frame_number = 2; // 帧号
-    uint32 randomSeed = 3;
-    MetaData meta = 4;
-}
 
-message client_frame // IMessage 
-{
-    repeated frame frames = 1;
-    uint64 frame_number = 2;
-}
