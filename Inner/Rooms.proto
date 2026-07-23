@@ -21,6 +21,14 @@ message RoomsPlayerLeaveNotify // IAddressMessage
     /// 离房原因，如 timed_out_grace_expired
     string reason = 2;
 }
+/// Avatar -> Rooms 客户端帧转发（业务暂为日志骨架）
+message RoomsClientFrameNotify // IAddressMessage
+{
+    int64 userId = 1;
+    uint64 frame_number = 2;
+    /// frames 数量，仅供日志/骨架透传，完整操作后续再扩展
+    int32 frames_count = 3;
+}
 
 /// 房间列表快照条目（非权威，仅供 Match 选房线索）
 message RoomSnapItem // IMessage
