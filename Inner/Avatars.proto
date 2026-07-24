@@ -1,7 +1,7 @@
 syntax = "proto3";
 package BattleOfCell.Message;
 
-/// 玩家进入请求
+/// 玩家进入请求（Avatar 本域：加载玩家）
 message PlayerEntryReq // IAddressRequest,PlayerEntryResp
 {
     int64 user_id = 1;
@@ -11,33 +11,45 @@ message PlayerEntryResp // IAddressResponse
 {
 }
 
-/// Gate -> Avatar 匹配请求
-message AvatarMatchReq // IAddressRequest,AvatarMatchResp
+/// Gate -> Avatar 匹配转发请求（Avatar 仅门禁后转发到 Match）
+message AvatarRelayMatchReq // IAddressRequest,AvatarRelayMatchResp
 {
     int64 user_id = 1;
 }
 
-/// Gate -> Avatar 匹配响应
-message AvatarMatchResp // IAddressResponse
+/// Gate -> Avatar 匹配转发响应
+message AvatarRelayMatchResp // IAddressResponse
 {
     /// 匹配成功后的房间 ID；失败时为 0
     int64 room_id = 2;
 }
 
 
-/// Gate -> Avatar 主动退出房间请求
-message AvatarLeaveRoomReq // IAddressRequest,AvatarLeaveRoomResp
+/// Gate -> Avatar 客户端匹配转发请求（对应 Outer MatchReq）
+message AvatarRelayClientMatchReq // IAddressRequest,AvatarRelayClientMatchResp
+{
+    int64 user_id = 1;
+    MatchType match_type = 2;
+}
+
+/// Gate -> Avatar 客户端匹配响应
+message AvatarRelayClientMatchResp // IAddressResponse
+{
+}
+/// Gate -> Avatar 主动退出房间转发请求（Avatar 门禁后转发到 Rooms）
+message AvatarRelayLeaveRoomReq // IAddressRequest,AvatarRelayLeaveRoomResp
 {
     int64 user_id = 1;
 }
 
-/// Gate -> Avatar 主动退出房间响应
-message AvatarLeaveRoomResp // IAddressResponse
+/// Gate -> Avatar 主动退出房间转发响应
+message AvatarRelayLeaveRoomResp // IAddressResponse
 {
     /// 离开成功后的房间 ID；失败时为 0
     int64 room_id = 2;
 }
-/// Gate -> Avatar 清理玩家通知（WsSession 清理后）
+
+/// Gate -> Avatar 清理玩家通知（Avatar 本域下线编排，非跨 Scene 业务转发）
 message AvatarCleanupNotify // IAddressMessage
 {
     int64 user_id = 1;
@@ -45,8 +57,8 @@ message AvatarCleanupNotify // IAddressMessage
     string reason = 2;
 }
 
-/// Gate -> Avatar 客户端帧转发
-message AvatarClientFrameNotify // IAddressMessage
+/// Gate -> Avatar 客户端帧转发通知（Avatar 门禁后转发到 Rooms）
+message AvatarRelayClientFrameNotify // IAddressMessage
 {
     int64 user_id = 1;
     uint64 frame_number = 2;

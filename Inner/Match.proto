@@ -2,14 +2,27 @@ syntax = "proto3";
 package BattleOfCell.Message;
 
 /// Avatar -> Match 匹配请求（查房列表 / Join / CreateAndEntry）
-message MatchReq // IAddressRequest,MatchResp
+/// 命名 InnerMatch* 以避开 Outer MatchReq/MatchResp
+message InnerMatchReq // IAddressRequest,InnerMatchResp
 {
     int64 user_id = 1;
 }
 
 /// Avatar -> Match 匹配响应
-message MatchResp // IAddressResponse
+message InnerMatchResp // IAddressResponse
 {
     /// 匹配成功后的房间 ID；失败时为 0
     int64 room_id = 2;
+}
+
+/// Avatar -> Match 客户端匹配转发请求（对应 Outer MatchReq）
+message InnerClientMatchReq // IAddressRequest,InnerClientMatchResp
+{
+    int64 user_id = 1;
+    MatchType match_type = 2;
+}
+
+/// Avatar -> Match 客户端匹配转发响应
+message InnerClientMatchResp // IAddressResponse
+{
 }
