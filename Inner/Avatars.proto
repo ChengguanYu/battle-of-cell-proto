@@ -25,10 +25,11 @@ message AvatarRelayMatchResp // IAddressResponse
 }
 
 
-/// Gate -> Avatar 客户端匹配转发请求（空转发骨架，对应 Outer MatchReq）
+/// Gate -> Avatar 客户端匹配转发请求（对应 Outer MatchReq）
 message AvatarRelayClientMatchReq // IAddressRequest,AvatarRelayClientMatchResp
 {
     int64 user_id = 1;
+    MatchType match_type = 2;
 }
 
 /// Gate -> Avatar 客户端匹配响应

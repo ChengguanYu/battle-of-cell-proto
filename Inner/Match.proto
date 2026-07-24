@@ -15,10 +15,11 @@ message InnerMatchResp // IAddressResponse
     int64 room_id = 2;
 }
 
-/// Avatar -> Match 客户端匹配转发请求（空转发骨架，对应 Outer MatchReq）
+/// Avatar -> Match 客户端匹配转发请求（对应 Outer MatchReq）
 message InnerClientMatchReq // IAddressRequest,InnerClientMatchResp
 {
     int64 user_id = 1;
+    MatchType match_type = 2;
 }
 
 /// Avatar -> Match 客户端匹配转发响应
