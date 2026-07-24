@@ -24,6 +24,17 @@ message AvatarRelayMatchResp // IAddressResponse
     int64 room_id = 2;
 }
 
+
+/// Gate -> Avatar 客户端匹配转发请求（空转发骨架，对应 Outer MatchReq）
+message AvatarRelayClientMatchReq // IAddressRequest,AvatarRelayClientMatchResp
+{
+    int64 user_id = 1;
+}
+
+/// Gate -> Avatar 客户端匹配响应
+message AvatarRelayClientMatchResp // IAddressResponse
+{
+}
 /// Gate -> Avatar 主动退出房间转发请求（Avatar 门禁后转发到 Rooms）
 message AvatarRelayLeaveRoomReq // IAddressRequest,AvatarRelayLeaveRoomResp
 {
