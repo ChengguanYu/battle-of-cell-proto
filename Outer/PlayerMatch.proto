@@ -2,6 +2,10 @@ syntax = "proto3";
 package BattleOfCell.Message;
 import "Outer/Meta.proto";
 
+enum MatchType {
+  NORMAL = 0;
+}
+
 /// 客户端发起匹配请求
 message PlayerMatchReq // IRequest,PlayerMatchResp
 {
