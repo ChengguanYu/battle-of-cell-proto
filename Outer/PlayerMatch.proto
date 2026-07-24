@@ -30,3 +30,15 @@ message MatchResp // IResponse
   repeated RespError error = 2;
   bool ok = 3;
 }
+
+message EntryRoomReq // IRequest,EntryRoomResp
+{
+
+}
+
+message EntryRoomResp // IResponse
+{
+  bool ok = 1;
+  repeated RespError error = 2;
+  int64 roomId = 3;
+}

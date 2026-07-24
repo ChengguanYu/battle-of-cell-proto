@@ -51,18 +51,6 @@ message Frame
     Player data = 3;
 }
 
-
-message EntryRoomReq // IRequest,EntryRoomResp
-{
-    
-}
-
-message EntryRoomResp // IResponse
-{
-    bool ok = 1;
-    repeated RespError error = 2;
-}
-
 // 这个枚举报错是正常的
 enum MatchType
 {
