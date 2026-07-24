@@ -2,6 +2,9 @@ syntax = "proto3";
 package BattleOfCell.Message;
 import "Outer/Meta.proto";
 
+enum MatchType {
+  NORMAL = 0 
+}
 /// 客户端发起匹配请求
 message PlayerMatchReq // IRequest,PlayerMatchResp
 {
@@ -16,4 +19,14 @@ message PlayerMatchResp // IResponse
   bool ok = 3;
   /// 匹配成功后的房间 ID；失败时为 0
   int64 room_id = 5;
+}
+
+message MatchReq{ //IRequest,MatchResp
+  MatchType match_type = 1;
+}
+
+message MatchResp{  // IResponse
+  MetaData meta = 1;
+  repeated RespError errors = 2;
+  bool ok = 3;
 }
