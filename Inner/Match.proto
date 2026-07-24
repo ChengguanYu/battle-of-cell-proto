@@ -4,7 +4,7 @@ package BattleOfCell.Message;
 /// Avatar -> Match 匹配请求（查房列表 / Join / CreateAndEntry）
 message MatchReq // IAddressRequest,MatchResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
 }
 
 /// Avatar -> Match 匹配响应

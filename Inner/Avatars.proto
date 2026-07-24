@@ -4,7 +4,7 @@ package BattleOfCell.Message;
 /// 玩家进入请求
 message PlayerEntryReq // IAddressRequest,PlayerEntryResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
 }
 /// 玩家进入响应
 message PlayerEntryResp // IAddressResponse
@@ -14,7 +14,7 @@ message PlayerEntryResp // IAddressResponse
 /// Gate -> Avatar 匹配请求
 message AvatarMatchReq // IAddressRequest,AvatarMatchResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
 }
 
 /// Gate -> Avatar 匹配响应
@@ -28,7 +28,7 @@ message AvatarMatchResp // IAddressResponse
 /// Gate -> Avatar 主动退出房间请求
 message AvatarLeaveRoomReq // IAddressRequest,AvatarLeaveRoomResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
 }
 
 /// Gate -> Avatar 主动退出房间响应
@@ -40,7 +40,7 @@ message AvatarLeaveRoomResp // IAddressResponse
 /// Gate -> Avatar 清理玩家通知（WsSession 清理后）
 message AvatarCleanupNotify // IAddressMessage
 {
-    int64 userId = 1;
+    int64 user_id = 1;
     /// 清理原因，如 timed_out_grace_expired
     string reason = 2;
 }
@@ -48,8 +48,8 @@ message AvatarCleanupNotify // IAddressMessage
 /// Gate -> Avatar 客户端帧转发
 message AvatarClientFrameNotify // IAddressMessage
 {
-    int64 userId = 1;
+    int64 user_id = 1;
     uint64 frame_number = 2;
-    /// 客户端本帧操作列表（与 Outer client_frame.frames 同构）
-    repeated frame frames = 3;
+    /// 客户端本帧操作列表（与 Outer ClientFrame.frames 同构）
+    repeated Frame frames = 3;
 }

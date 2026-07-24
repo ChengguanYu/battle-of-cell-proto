@@ -4,7 +4,7 @@ package BattleOfCell.Message;
 /// Avatar -> Rooms 玩家离房检查（会话清理等）
 message RoomsPlayerLeaveNotify // IAddressMessage
 {
-    int64 userId = 1;
+    int64 user_id = 1;
     /// 离房原因，如 timed_out_grace_expired
     string reason = 2;
 }
@@ -12,7 +12,7 @@ message RoomsPlayerLeaveNotify // IAddressMessage
 /// Avatar -> Rooms 主动离房请求（在线退出，等待结果）
 message RoomsLeaveReq // IAddressRequest,RoomsLeaveResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
     /// 离房原因，如 client_leave
     string reason = 2;
 }
@@ -26,10 +26,10 @@ message RoomsLeaveResp // IAddressResponse
 /// Avatar -> Rooms 客户端帧转发
 message RoomsClientFrameNotify // IAddressMessage
 {
-    int64 userId = 1;
+    int64 user_id = 1;
     uint64 frame_number = 2;
-    /// 客户端本帧操作列表（与 Outer client_frame.frames 同构）
-    repeated frame frames = 3;
+    /// 客户端本帧操作列表（与 Outer ClientFrame.frames 同构）
+    repeated Frame frames = 3;
 }
 
 /// 房间列表快照条目（非权威，仅供 Match 选房线索）
@@ -52,13 +52,13 @@ message RoomsGetRoomListSnapResp // IAddressResponse
 {
     repeated RoomSnapItem rooms = 2;
     /// 是否为空列表；true 表示当前无可观察房间
-    bool IsEmpty = 3;
+    bool is_empty = 3;
 }
 
 /// Match -> Rooms 加入指定房间
 message RoomsJoinReq // IAddressRequest,RoomsJoinResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
     int64 room_id = 2;
 }
 
@@ -72,7 +72,7 @@ message RoomsJoinResp // IAddressResponse
 /// Match -> Rooms 创建房间并加入首位成员
 message RoomsCreateReq // IAddressRequest,RoomsCreateResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
 }
 
 /// Match -> Rooms 创建房间响应
@@ -85,7 +85,7 @@ message RoomsCreateResp // IAddressResponse
 /// Match -> Rooms 创建并进入（纯聚合 Create + Enter，无额外业务）
 message RoomsCreateAndEntryReq // IAddressRequest,RoomsCreateAndEntryResp
 {
-    int64 userId = 1;
+    int64 user_id = 1;
 }
 
 /// Match -> Rooms 创建并进入响应

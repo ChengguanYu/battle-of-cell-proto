@@ -9,46 +9,44 @@ enum Op
     LAUNCH = 1
 }
 
-message server_frame // IMessage
+message ServerFrame // IMessage
 {
-    repeated frame frames = 1;
+    repeated Frame frames = 1;
     uint64 frame_number = 2; // 帧号
-    uint32 randomSeed = 3;
+    uint32 random_seed = 3;
     MetaData meta = 4;
 }
 
-message client_frame // IMessage 
+message ClientFrame // IMessage
 {
-    repeated frame frames = 1;
+    repeated Frame frames = 1;
     uint64 frame_number = 2;
 }
 
 // 为了防止平台浮点计算差异，使用定点数模拟浮点数 ， 单位取小数点后3位
 // 以下为嵌套结构，不作为独立网络消息发送
-message vec2d
+message Vec2d
 {
     int64 x = 1;
     int64 y = 2;
 }
-message position2d
+message Position2d
 {
     int32 x = 1;
     int32 y = 2;
 }
 
-message player
+message Player
 {
-    vec2d direction = 1;
+    Vec2d direction = 1;
     int64 speed = 2;    // 模拟浮点数
     // 当速度和向量有值的时候 ， 坐标为无效数据 ，用于初始化等阶段
-    position2d position = 3;
+    Position2d position = 3;
     uint32 eid = 4;
 }
 
-message frame 
+message Frame
 {
     Op op = 2;
-    player data = 3;
+    Player data = 3;
 }
-
-
