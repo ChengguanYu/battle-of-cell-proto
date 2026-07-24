@@ -1,27 +1,14 @@
 syntax = "proto3";
 package BattleOfCell.Message;
 
-/// Avatar -> Match 匹配请求（旧链路，保留兼容）
+/// Avatar -> Match 匹配请求（查房列表 / Join / CreateAndEntry）
 message MatchReq // IAddressRequest,MatchResp
 {
     int64 userId = 1;
 }
 
-/// Avatar -> Match 匹配响应（旧链路，保留兼容）
+/// Avatar -> Match 匹配响应
 message MatchResp // IAddressResponse
-{
-    /// 匹配成功后的房间 ID；失败时为 0
-    int64 room_id = 2;
-}
-
-/// Avatar -> Match 新匹配请求（Match 侧编排：查房列表 / Join / Create）
-message NewMatchReq // IAddressRequest,NewMatchResp
-{
-    int64 userId = 1;
-}
-
-/// Avatar -> Match 新匹配响应
-message NewMatchResp // IAddressResponse
 {
     /// 匹配成功后的房间 ID；失败时为 0
     int64 room_id = 2;
