@@ -5,8 +5,8 @@ import "Outer/Meta.proto";
 // 这个枚举报错是正常的
 enum Op
 {
-    SPAWN = 0
-    LAUNCH = 1
+    SPAWN = 0;
+    LAUNCH = 1;
 }
 
 message ServerFrame // IMessage
